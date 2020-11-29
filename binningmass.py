@@ -98,7 +98,7 @@ plt.hist(vol_table['logSurfaceDensity'], bins = b,histtype='step', lw=2)
 
 #GROUPING BY MASS
 
-counts, bins = np.histogram(vol_table['logmstar'], bins=20, range=[9.5,11.3])
+counts, bins = np.histogram(vol_table['logmstar'], bins=10, range=[9.5,11.3])
 vol_table['mass_bins']= np.digitize(vol_table['logmstar'], bins)
 grouped = vol_table.group_by('mass_bins')
 
@@ -111,7 +111,7 @@ legend = ax.legend(loc='upper right', shadow=True, prop={'size': 6})
 
 #environmental bins
 #for all mass bins group by galaxy density
-for x in range(1, 20):
+for x in range(1, 10):
     mb = grouped['mass_bins'] == x
     vol_table1 = grouped[mb] 
     lens=len(vol_table1['mass_bins'])
